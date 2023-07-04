@@ -1,0 +1,79 @@
+CREATE DATABASE student_database;
+
+CREATE TABLE student_table 
+(
+student_id INT,
+student_name VARCHAR (20),
+Department VARCHAR (20),
+email_id VARCHAR (100),
+Phone_no INT,
+Address VARCHAR (50),
+Date_of_birth DATE,
+Gender VARCHAR (10),
+Major VARCHAR (50),
+GPA INT,
+Grade VARCHAR (1),
+);
+
+INSERT INTO student_table 
+(student_id, student_name, Department, email_id, Phone_no, Address, Date_of_birth, Gender, Major, GPA, Grade)
+VALUES
+(1, 'John', 'Computer Science', 'john.doe@gmail.com', 1234567890, '123 Main St', '1995-08-15', 'Male', 'Computer Science', 3.5, 'A'),
+(2, 'Jane', 'Chemistry', 'jane.smith@gmail.com', 9876543210, '456 Oak Ave', '1998-02-28', 'Female', 'Chemistry', 3.2, 'B'),
+(3, 'Mike', 'Business Administration', 'mike.johnson@gmail.com', 5551234567, '789 Elm St', '1997-06-10', 'Male', 'Business Administration', 3.8, 'A'),
+(4, 'Emily', 'English Literature', 'emily.davis@gmail.com', 9998887777, '321 Maple Ave', '1999-11-20', 'Female', 'English Literature', 3.6, 'A'),
+(5, 'Alex', 'Electrical Engineering', 'alex.wilson@gmail.com', 1112223333, '654 Pine St', '1996-04-05', 'Male', 'Electrical Engineering', 3.9, 'A'),
+(6, 'Sarah', 'Psychology', 'sarah.brown@gmail.com', 4445556666, '987 Cedar Ave', '1998-09-12', 'Female', 'Psychology', 3.4, 'B'),
+(7, 'Michael', 'Mathematics', 'michael.lee@gmail.com', 7778889999, '123 Walnut St', '1997-12-25', 'Male', 'Mathematics', 3.7, 'A'),
+(8, 'Olivia', 'Art', 'olivia.taylor@gmail.com', 6667778888, '456 Oak St', '1999-03-18', 'Female', 'Art History', 3.1, 'B'),
+(9, 'Daniel', 'Physics', 'daniel.wilson@gmail.com', 2223334444, '789 Elm Ave', '1995-07-02', 'Male', 'Physics', 3.3, 'C'),
+(10, 'Sophia', 'Biology', 'sophia.martinez@gmail.com', 8889990000, '321 Maple St', '1996-10-30', 'Female', 'Biology', 3.8, 'A');
+
+SELECT *
+FROM 	
+	student_table
+ORDER BY
+	Grade DESC;
+
+SELECT *
+FROM 
+	student_table
+WHERE
+	Gender = 'Male';
+
+SELECT *
+FROM 
+	student_table
+WHERE
+	GPA < 5;
+
+UPDATE student_table
+SET email_id = alex.w@gmail.com, Grade = C
+WHERE student_id = 5;
+
+SELECT 
+student_name
+, DATE_PART('year', age(CURRENT_DATE, Date_of_birth)) AS age
+FROM 
+	student_table
+WHERE 
+	Grade = 'B';
+
+SELECT
+	department, Gender, AVG (GPA)
+FROM
+	student_table
+GROUP BY 
+	department, gender;
+
+ALTER TABLE 
+	student_name
+RENAME TO 
+	student_info;
+
+SELECT 
+	student_name
+FROM 
+	student_info
+WHERE 
+GPA = (SELECT MAX(GPA) FROM student_info);
