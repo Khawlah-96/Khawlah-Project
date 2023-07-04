@@ -1,0 +1,68 @@
+CREATE DATABASE sales_data;
+
+CREATE TABLE sales_sample (
+    product_ID INT PRIMARY KEY,
+    Region VARCHAR (50),
+    Sale_Date DATE,
+    Sales_Amount INT
+);
+INSERT INTO sales_sample (product_ID, Region, Date, Sales_Amount)
+VALUES
+    (1, 'North', '2023-07-01', 1000),
+    (2, 'South', '2023-07-02', 1500),
+    (3, 'East', '2023-07-03', 2000),
+    (4, 'West', '2023-07-04', 1200),
+    (5, 'North', '2023-07-05', 1800),
+    (6, 'South', '2023-07-06', 2200),
+    (7, 'East', '2023-07-07', 1300),
+    (8, 'West', '2023-07-08', 1700),
+    (9, 'North', '2023-07-09', 1900),
+    (10, 'South', '2023-07-10', 2100);
+
+SELECT Region, product_ID, SUM(Sales_Amount) AS Total_Sales
+FROM sales_sample
+GROUP BY Region, product_ID
+ORDER BY Region, product_ID;
+
+SELECT Region, SUM(Sales_Amount) AS Total_Sales
+FROM sales_sample
+GROUP BY Region
+ORDER BY Region;
+
+SELECT
+    product_ID,
+    Region,
+    Date,
+    SUM(Sales_Amount) AS Total_Sales
+FROM
+    sales_sample
+GROUP BY
+    product_ID, Region, Date
+ORDER BY
+    product_ID, Region, Date;
+
+SELECT
+    Region,
+    Date,
+    SUM(Sales_Amount) AS Total_Sales
+FROM
+    sales_sample
+WHERE
+    Region = 'North America'
+    AND Date BETWEEN '2022-01-01' AND '2022-12-31'
+GROUP BY
+    Region, Date
+ORDER BY
+    Date;
+
+SELECT
+    product_ID,
+    Region,
+    Date,
+    Sales_Amount
+FROM
+    sales_sample
+WHERE
+    product_ID = 1234 
+    AND Region = 'North America' 
+    AND Date = '2022-07-01';
