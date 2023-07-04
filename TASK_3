@@ -1,0 +1,59 @@
+CREATE DATABASE EventsManagement;
+
+CREATE TABLE Events (
+    Event_id INT,
+    Event_Name VARCHAR(20),
+    Event_Date DATE,
+    Event_Location VARCHAR(50),
+    Event_Description VARCHAR(100)
+);
+
+CREATE TABLE Attendees (
+    Attendee_Id INT,
+    Attendee_Name VARCHAR(20),
+    Attendee_Phone VARCHAR(20),
+    Attendee_Email VARCHAR(50),
+    Attendee_City VARCHAR(50)
+);
+
+CREATE TABLE Registrations (
+    Registration_id INT,
+    Event_Id INT,
+    Attendee_Id INT,
+    Registration_Date DATE,
+    Registration_Amount DECIMAL(10, 2),
+    FOREIGN KEY (Event_Id) REFERENCES Events (Event_Id),
+    FOREIGN KEY (Attendee_Id) REFERENCES Attendees (Attendee_Id)
+);
+
+INSERT INTO Events (Event_id, Event_Name, Event_Date, Event_Location, Event_Description)
+VALUES
+    (1, 'Conference', '2023-07-15', 'Convention Center', 'Annual conference for professionals'),
+    (2, 'Workshop', '2023-08-10', 'Training Center', 'Hands-on workshop for skill development'),
+    (3, 'Seminar', '2023-09-05', 'Hotel Ballroom', 'Educational seminar on current trends');
+
+INSERT INTO Attendees (Attendee_Id, Attendee_Name, Attendee_Phone, Attendee_Email, Attendee_City)
+VALUES
+    (1, 'John Doe', '1234567890', 'john.doe@example.com', 'New York'),
+    (2, 'Jane Smith', '9876543210', 'jane.smith@example.com', 'Los Angeles'),
+    (3, 'Mike Johnson', '5551234567', 'mike.johnson@example.com', 'Chicago');
+
+INSERT INTO Registrations (Registration_id, Event_Id, Attendee_Id, Registration_Date, Registration_Amount)
+VALUES
+    (1, 1, 1, '2023-07-10', 100),
+    (2, 2, 2, '2023-08-05', 75),
+    (3, 1, 3, '2023-07-12', 100);
+
+UPDATE Events
+SET Event_Name = 'Mental Health Seminar ''23'
+WHERE Event_Id = 1;
+
+DELETE FROM Events WHERE Event_Id = 4;
+
+INSERT INTO Attendees (Attendee_Id, Attendee_Name, Attendee_Phone, Attendee_Email, Attendee_City)
+VALUES
+    (4, 'Jack', '98883223214', 'Jack@example.com', 'California');
+
+INSERT INTO Registrations (Registration_id, Event_Id, Attendee_Id, Registration_Date, Registration_Amount)
+VALUES
+    (4, 3, 4, '2023-08-04', 120);
