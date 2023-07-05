@@ -1,2 +1,1 @@
-![TASK2_OUTPUT](https://github.com/Khawlah-96/Khawlah-Project/assets/138039589/50a5ca9f-b9a9-4dbe-a925-552b58664c88)
-
+![TASK1_OUTPUT](https://github.com/Khawlah-96/Khawlah-Project/assets/138039589/8120e2e9-1aa0-4040-a17b-974fc2ad967f)
