@@ -6,7 +6,7 @@ CREATE TABLE sales_sample (
     Sale_Date DATE,
     Sales_Amount INT
 );
-INSERT INTO sales_sample (product_ID, Region, Date, Sales_Amount)
+INSERT INTO sales_sample (product_ID, Region, Sale_Date, Sales_Amount)
 VALUES
     (1, 'North', '2023-07-01', 1000),
     (2, 'South', '2023-07-02', 1500),
@@ -32,37 +32,37 @@ ORDER BY Region;
 SELECT
     product_ID,
     Region,
-    Date,
+    Sale_Date,
     SUM(Sales_Amount) AS Total_Sales
 FROM
     sales_sample
 GROUP BY
-    product_ID, Region, Date
+    product_ID, Region, Sale_Date
 ORDER BY
-    product_ID, Region, Date;
+    product_ID, Region, Sale_Date;
 
 SELECT
     Region,
-    Date,
+    Sale_Date,
     SUM(Sales_Amount) AS Total_Sales
 FROM
     sales_sample
 WHERE
     Region = 'North America'
-    AND Date BETWEEN '2022-01-01' AND '2022-12-31'
+    AND Sale_Date BETWEEN '2022-01-01' AND '2022-12-31'
 GROUP BY
-    Region, Date
+    Region, Sale_Date
 ORDER BY
-    Date;
+    Sale_Date;
 
 SELECT
     product_ID,
     Region,
-    Date,
+    Sale_Date,
     Sales_Amount
 FROM
     sales_sample
 WHERE
     product_ID = 1234 
     AND Region = 'North America' 
-    AND Date = '2022-07-01';
+    AND Sale_Date = '2022-07-01';
