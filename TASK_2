@@ -12,7 +12,7 @@ Date_of_birth DATE,
 Gender VARCHAR (10),
 Major VARCHAR (50),
 GPA INT,
-Grade VARCHAR (1),
+Grade VARCHAR (1)
 );
 
 INSERT INTO student_table 
@@ -67,7 +67,7 @@ GROUP BY
 	department, gender;
 
 ALTER TABLE 
-	student_name
+	student_table
 RENAME TO 
 	student_info;
 
